@@ -18,7 +18,7 @@ public class MemberController {
 	public String adminLogin(String username, String password) {
 		// Member member = memberService.findByLoginId(username);
 		System.err.println(username + "=======" + password + "===");
-		return "admin/index";
+		return "admin/hello";
 	}
 
 	public static void memberLogin() {

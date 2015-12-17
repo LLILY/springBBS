@@ -7,10 +7,13 @@
   
 
   <!-- 定义DispatcherServlet -->
+  
+  <!-- 加载spring相关的配置文件 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/applicationContext.xml</param-value>
   </context-param>
+  <!-- 启用spring监听 -->
     <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -23,6 +26,7 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <!-- 拦截匹配的请求 -->
   <servlet-mapping>
     <servlet-name>spring</servlet-name>
     <url-pattern>/</url-pattern>

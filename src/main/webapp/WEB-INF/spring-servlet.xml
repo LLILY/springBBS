@@ -14,12 +14,29 @@
     <context:component-scan base-package="app.controller"/>
  
     <mvc:annotation-driven/> 
- 
-    <!-- 定义视图解析器 -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/views/">
-        </property>
-        <property name="suffix"  value=".jsp">
-        </property>
+  
+   <!-- 配置Freemarker屬性文件路徑 -->
+<bean id="freemarkerConfiguration"        class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <property name="location" value="/WEB-INF/freemarker.properties" />
+</bean>
+<!-- FreeMarker环境配置 -->
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <!-- freemarker模板位置 -->
+        <property name="templateLoaderPath" value="/views/"/>
     </bean>
+    
+    <!-- FreeMarker视图解析 -->
+    <bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".ftl"/>
+        <!-- 优先级 freemaker高于jsp -->
+        <property name="order" value="0"/>
+    </bean>
+
+    <!-- 定义视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/views/"></property>
+        <property name="suffix"  value=".jsp"></property>
+        <property name="order" value="1"/>
+    </bean> 
 </beans>
