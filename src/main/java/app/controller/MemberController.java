@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import app.service.member.MemberService;
 
@@ -14,15 +15,25 @@ public class MemberController {
 	@Resource
 	public MemberService memberService;
 
-	@RequestMapping("adminLogin")
+	@RequestMapping("/adminLogin")
 	public String adminLogin(String username, String password) {
 		// Member member = memberService.findByLoginId(username);
-		System.err.println(username + "=======" + password + "===");
 		return "admin/hello";
 	}
 
 	public static void memberLogin() {
 
+	}
+	
+	@RequestMapping("/loginPage")
+	public String loginPage(){
+		return "login";
+	}
+	
+	@RequestMapping("/registPage")
+	public String registPage() {
+		// Member member = memberService.findByLoginId(username);
+		return "regist";
 	}
 
 }

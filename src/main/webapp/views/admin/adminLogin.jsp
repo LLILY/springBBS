@@ -28,7 +28,7 @@
 
 <div class="container">
 
-    <form class="form-signin" id="adminlogin_form" action="http://localhost:8080/springBBS/user/adminLogin" method="post">
+    <form class="form-signin" id="adminlogin_form" action="/springBBS/user/adminLogin" method="post">
         <h2 class="form-signin-heading">请登录</h2>
         <label for="username" class="sr-only">用户名</label>
         <input type="username" id="username" name="username" value="" class="form-control" placeholder="用户名" required autofocus>

@@ -15,6 +15,9 @@
  
     <mvc:annotation-driven/> 
   
+     <!-- 静态资源访问（不拦截此目录下的东西的访问）  -->  
+    <mvc:resources location="/WEB-INF/public/"  mapping="/public/**" /> 
+    
    <!-- 配置Freemarker屬性文件路徑 -->
 <bean id="freemarkerConfiguration"        class="org.springframework.beans.factory.config.PropertiesFactoryBean">
     <property name="location" value="/WEB-INF/freemarker.properties" />
@@ -27,6 +30,7 @@
     
     <!-- FreeMarker视图解析 -->
     <bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+    	<property name="contentType" value="text/html;charset=UTF-8"></property>
         <property name="prefix" value="/"/>
         <property name="suffix" value=".ftl"/>
         <!-- 优先级 freemaker高于jsp -->
