@@ -99,6 +99,6 @@
     </aop:config>
     <aop:config  proxy-target-class="true"/>
     
-
+	<bean class="jobs.StartUp"/>
      
 </beans>
