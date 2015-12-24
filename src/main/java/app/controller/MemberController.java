@@ -14,6 +14,11 @@ public class MemberController {
 
 	@Resource
 	public MemberService memberService;
+	
+	@RequestMapping("/index")
+	public String index() {
+		return "front/index";
+	}
 
 	@RequestMapping("/adminLogin")
 	public String adminLogin(String username, String password) {
