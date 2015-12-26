@@ -13,6 +13,8 @@
   <body>
   <#include "/front/common/header.ftl">
    <div class="container" style="margin-top:55px; text-align:left;"> 
+   
+ <div class="col-md-9" style="padding-right: 5px;">
    <font color="white">
     <div class="dayTitle"> 
      <a id="homepage1_HomePageDays_ctl00_ImageLink" href="http://www.cnblogs.com/aehyok/">置顶随笔</a> 
@@ -564,8 +566,10 @@
      </div></h5> 
    </article> 
   </div> 
-    
+  	  <#include "/front/common/sidebar.ftl">
+   </div>
     <script src="<@spring.url'/public/js/module/jquery-2.1.4.js'/>" type="text/javascript"></script>
     <script src="<@spring.url'/public/bootstrap/js/bootstrap.min.js'/>"></script>
+    <script src="<@spring.url'/public/js/module/bootstrap-hover-dropdown.min.js'/>"></script>
   </body>
 </html>
