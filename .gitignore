@@ -1,4 +1,7 @@
 *.class
+.gitignore
+.gitognore~
+.*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

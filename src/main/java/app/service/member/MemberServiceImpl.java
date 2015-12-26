@@ -25,8 +25,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Member findByLoginId(String loginId) {
-		return memberDao.findByLoginId(loginId);
+	public Member findByUsername(String username) {
+		return memberDao.findByUsername(username);
 	}
 
 }

@@ -4,8 +4,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
+import app.model.member.Member;
 import app.service.member.MemberService;
 
 @Controller
@@ -21,19 +21,35 @@ public class MemberController {
 		return "admin/hello";
 	}
 
-	public static void memberLogin() {
-
+	@RequestMapping("/memberLogin")
+	public String memberLogin(String email, String password) {
+		Member member = memberService.findByEmail(email);
+		if (member != null && member.password.equals(password)) {
+			return "true";
+		}
+		return "false";
 	}
-	
+
 	@RequestMapping("/loginPage")
-	public String loginPage(){
+	public String loginPage() {
 		return "login";
 	}
-	
+
 	@RequestMapping("/registPage")
 	public String registPage() {
 		// Member member = memberService.findByLoginId(username);
 		return "regist";
+	}
+
+	@RequestMapping("/regist")
+	public String registUser(String email, String username, String displayName,
+			String password) {
+		Member member = memberService.findByUsername(username);
+		if (member == null) {
+			member = Member.create(email, username, displayName, password);
+			memberService.save(member);
+		}
+		return "login";
 	}
 
 }

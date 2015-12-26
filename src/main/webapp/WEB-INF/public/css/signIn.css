@@ -45,3 +45,9 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.login-tip {
+  height: 30px;
+  color: #F00;
+  font-size: 14px;
+  line-height: 24px;}

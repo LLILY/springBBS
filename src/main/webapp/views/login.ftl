@@ -12,12 +12,13 @@
 </head>
   <body>
    <div class="container" style="width:450px;border:1px solid black">
-      <form class="form-signin">
+      <form class="form-signin" method="get"  action = '/springBBS/user/memberLogin'>
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        <p id="loginTip" class="login-tip"></p>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
@@ -52,5 +53,6 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<@spring.url'/public/js/module/jquery-2.1.4.js'/>" type="text/javascript"></script>
     <script src="<@spring.url'/public/bootstrap/js/bootstrap.min.js'/>"></script>
+    <script src="<@spring.url'/public/js/login.js'/>" type="text/javascript"></script>
   </body>
 </html>

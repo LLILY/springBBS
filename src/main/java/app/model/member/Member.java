@@ -17,7 +17,7 @@ public class Member extends BaseModel {
 	public String password;
 
 	public String email;
-	public String fullName; //
+	public String displayName; //
 
 	public String avatarUrl; // 头像路径 add
 	public String profileName; // 个人主页 url
@@ -70,4 +70,13 @@ public class Member extends BaseModel {
 		}
 	}
 
+	public static Member create(String email, String username,
+			String displayName, String password) {
+		Member member = new Member();
+		member.email = email;
+		member.username = username;
+		member.displayName = displayName;
+		member.password = password;
+		return member;
+	}
 }
