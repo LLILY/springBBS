@@ -57,7 +57,7 @@
         </property>
          
         <!-- 自动扫描实体对象 model.bean的包结构中存放实体类   -->
-        <property name="packagesToScan" value="app.models.*" />
+        <property name="packagesToScan" value="app.model.*" />
     </bean>
     <!-- 定义事务管理 -->
     <bean id="transactionManager"

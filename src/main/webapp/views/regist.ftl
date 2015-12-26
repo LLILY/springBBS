@@ -32,25 +32,25 @@
                 <img src="/Content/Images/iphone.png" alt="">
             </div>
             <div class="register col-md-6">
-                <form id="RegisterForm" novalidate="novalidate" method="post">
+                <form id="RegisterForm" novalidate="novalidate" method="post"  action = '/springBBS/user/regist' onsubmit = "return checkUser();">
                     <h2>Register To <span class="red"><strong>springBBS</strong></span></h2>
                     <label for="Email">邮箱</label>
-                    <input type="text" id="Email" name="Email" required="" placeholder="键入你的邮箱地址...">
+                    <input type="text" id="Email" name="email" required="" placeholder="键入你的邮箱地址...">
                     <label for="UserName">登录用户名</label>
-                    <input type="text" id="UserName" name="UserName" placeholder="键入你的登录用户名...">
+                    <input type="text" id="UserName" name="userName" placeholder="键入你的登录用户名...">
                     <label for="displayname">显示名称</label>
-                    <input type="text" id="displayname" name="DisplayName" placeholder="键入你的显示名称...">
+                    <input type="text" id="displayname" name="displayName" placeholder="键入你的显示名称...">
                     <label for="Password">密码</label>
-                    <input type="password" id="Password" name="Password" placeholder="键入你的密码...">
+                    <input type="password" id="Password" name="password" placeholder="键入你的密码...">
                     <label for="ConfirmPassword">确认密码</label>
-                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder="请再次键入你的密码...">
+                    <input type="password" id="ConfirmPassword" name="confirmPassword" placeholder="请再次键入你的密码...">
                     <button type="submit">注册</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn-link" href="/springBBS/user/loginPage">返回登录</a>
                 </form>
             </div>
         </div>
     </div>
     
-  
+  	<script src="<@spring.url'/public/js/regist.js'/>" type="text/javascript"></script>
     <script src="<@spring.url'/public/js/module/jquery-2.1.4.js'/>" type="text/javascript"></script>
     <script src="<@spring.url'/public/bootstrap/js/bootstrap.min.js'/>"></script>
   </body>

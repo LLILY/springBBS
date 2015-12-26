@@ -1,7 +1,5 @@
 package app.dao.member;
 
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
 
 import app.dao.BaseDaoImpl;
@@ -23,12 +21,16 @@ public class MemberDaoImpl extends BaseDaoImpl implements MemberDao {
 
 	@Override
 	public Member findByEmail(String email) {
-		return (Member) find("select ml from Member ml where ml.isDeleted = false and ml.email = ?", email);
+		return (Member) find(
+				"select ml from Member ml where ml.isDeleted = false and ml.email = ?",
+				email);
 	}
 
 	@Override
-	public Member findByLoginId(String username) {
-		return (Member) find("select ml from Member ml where ml.isDeleted = false and ml.loginId = ?", username);
+	public Member findByUsername(String username) {
+		return (Member) find(
+				"select ml from Member ml where ml.isDeleted = false and ml.username = ?",
+				username);
 	}
 
 	@Override
