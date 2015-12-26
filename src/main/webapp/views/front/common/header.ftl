@@ -1,4 +1,4 @@
-  <div class="collapse navbar-collapse navigation" > 
+  <div class="navbar navbar-collapse navbar-inverse" > 
    <ul class="nav navbar-nav"> 
     <li><a href="">博客</a></li> 
     <li><a href="">帖子</a></li> 
@@ -27,7 +27,7 @@
                         <span class="dropdown-arrow"></span>
                         <ul class="dropdown-menu">
                             <li><a href=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;我的</a></li>
-                            <li><a href=""><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;设置</a></li>
+                            <li><a href="/springBBS/user/profile"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;设置</a></li>
                             <li><a href=""><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
                         </ul>
                     </li>
