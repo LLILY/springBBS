@@ -10,7 +10,13 @@ public class PostSController {
 	@RequestMapping("/create")
 	public String create() {
 
-		return "front/bbs/editPost";
+		return "front/post/editPost";
+	}
+
+	@RequestMapping("/view")
+	public String postView() {
+
+		return "front/post/postView";
 	}
 
 }

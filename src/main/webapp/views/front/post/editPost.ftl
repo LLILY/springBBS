@@ -9,7 +9,6 @@
     <title>发布博客</title>
    <link href="<@spring.url'/public/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet" media="screen"/>
       <link href="<@spring.url'/public/bootstrap/css/bootstrap-theme.css'/>" rel="stylesheet" media="screen"/>
-   <link href="<@spring.url'/public/css/index.css'/>" rel="stylesheet" media="screen"/>
 </head>
   <body>
     <#include "/front/common/header.ftl">
@@ -17,12 +16,9 @@
    <div class="row"> 
     <div class="col-md-9" style="padding-right: 5px;"> 
      <div class="panel panel-default"> 
-      <div class="panel-heading"> 
-       <ol class="breadcrumb"> 
-        <li><a href="/">首页</a></li> 
-        <li class="active">发布话题</li> 
-       </ol> 
-      </div> 
+      <div class="panel-heading">
+      <a href="">首页</a><span>  / </span><span>发布话题</span>
+    </div>
       <div class="panel-body"> 
        <form id="create_form" action="" method="post"> 
         <select name="sid" id="sid" class="form-control" style="width: 20%; margin-bottom: 5px;"> 
@@ -43,6 +39,7 @@
        </select> 
         <input type="text" placeholder="标题字数10字以上" id="title" name="title" class="form-control" style="width: 79.5%;margin-bottom: 5px;" /> 
        </div>
+        <input type="text" placeholder="文章标签（最多添加5个标签，多个标签之间用）“,”分隔" id="label" name="" class="form-control" style="margin-bottom: 5px;" /> 
         <input type="text" placeholder="原文地址（原创可不写）" id="original_url" name="original_url" class="form-control" style="margin-bottom: 5px;" /> 
         <div style="margin-bottom: 5px;"> 
          <textarea id="content" name="content" class="form-control" style="height: 400px;"></textarea> 
@@ -91,6 +88,7 @@
   </div> 
 <script src="<@spring.url'/public/xheditor-1.1.14/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script src="<@spring.url'/public/xheditor-1.1.14/xheditor-1.1.14-zh-cn.min.js'/>" type="text/javascript"></script>
+  <script src="<@spring.url'/public/js/module/bootstrap-hover-dropdown.min.js'/>"></script>
 <style type="text/css">  
      /* 增加插入代码工具图标 */  
     .btnCode {  

@@ -18,10 +18,7 @@
         <div class="col-md-9" style="padding-right: 5px;">
 <div class="panel panel-default">
     <div class="panel-heading">
-        <ol class="breadcrumb">
-            <li><a href="">首页</a></li>
-            <li class="active">设置</li>
-        </ol>
+      <a href="">首页</a><span>  / </span><span>设置</span>
     </div>
     <div class="panel-body">
         <div class="alert alert-success hidden" id="setSuccess" role="alert">保存成功。</div>
