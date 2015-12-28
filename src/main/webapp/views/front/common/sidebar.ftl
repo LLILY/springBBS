@@ -1,22 +1,22 @@
 <div class="col-md-3" style="padding-left: 5px;">
             <div id="jf_sidebar">
-<div class="panel panel-default">
-        <div class="panel-heading">
-            <span class="glyphicon glyphicon-user"></span>
-            个人信息
-        </div>
-        <div class="panel-body">
-            <div>
-                <a href="">
-                    <img src="" title="记忆_淡忘" width="48">
-                </a>&nbsp;
-                <span><a href="">记忆_淡忘</a></span>
-                <div style="margin-top: 10px;">
-                    <div>积分: 16 </div>
-                </div>
-            </div>
-        </div>
-</div>
+			<div class="panel panel-default">
+			        <div class="panel-heading">
+			            <span class="glyphicon glyphicon-user"></span>
+			            个人信息
+			        </div>
+			        <div class="panel-body">
+			            <div>
+			                <a href="">
+			                    <img src="" title="记忆_淡忘" width="48">
+			                </a>&nbsp;
+			                <span><a href="">记忆_淡忘</a></span>
+			                <div style="margin-top: 10px;">
+			                    <div>积分: 16 </div>
+			                </div>
+			            </div>
+			        </div>
+			</div>
     <div class="panel panel-default">
         <div class="panel-body">
             <a href="" class="btn btn-info btn-sm">领取今日的登录奖励</a>
@@ -24,7 +24,8 @@
     </div>
         <div class="panel panel-default">
             <div class="panel-body">
-                <a href="" class="btn btn-info btn-sm">&nbsp;发布话题&nbsp;</a>
+                <a href="/springBBS/post/create" class="btn btn-info btn-sm">发布博客</a>
+                 <a href="/springBBS/post/create" class="btn btn-info btn-sm">发布帖子</a>
             </div>
         </div>
     <div class="panel panel-default">

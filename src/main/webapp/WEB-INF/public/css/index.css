@@ -4,6 +4,7 @@ body{background-color:#f5f5f5}
 .navigation{background-color:#3d85c6;}
 .navigation a{color:#ffffff}
 
+.mt5{margin-top:5px;}.mt10{margin-top:10px;}.mt15{margin-top:15px;}.mt20{margin-top:20px;}.mt25{margin-top:25px;}
 #scrollUp {
             background-image: url("../Content/Images/top.png");
             bottom: 20px;
