@@ -1,4 +1,4 @@
-  <div class="collapse navbar-collapse navigation" > 
+  <div class="navbar navbar-collapse navbar-inverse" > 
    <ul class="nav navbar-nav"> 
     <li><a href="">博客</a></li> 
     <li><a href="">帖子</a></li> 
@@ -12,26 +12,26 @@
                     <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
                 </div>
             </form>
-   <#if displayName=="">
+    <#if displayName=="">
 	   <ul class="nav navbar-nav navbar-right"> 
 	    <li><a class="btn" href="/Account/Login">登录</a></li> 
 	    <li><a class="btn" href="/Account/Register">注册</a></li> 
 	  </ul> 
-  </#if>
-  <ul class="nav navbar-nav navbar-right">
-                <li ><a href="">通知 <span class="badge" id="badge"></span></a></li>
-                <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                        <img src="http://jfbbs.tomoya.cn/static/img/default_avatar.png" width="20" style="border-radius: 20px;"/>
-                        ${displayName}
-                        <span class="caret"></span>
-                    </a>
-                    <span class="dropdown-arrow"></span>
-                    <ul class="dropdown-menu">
-                        <li><a href=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;我的</a></li>
-                        <li><a href=""><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;设置</a></li>
-                        <li><a href=""><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
-                    </ul>
-                </li>
-        </ul>
+  </#if> 
+      <ul class="nav navbar-nav navbar-right">
+                    <li ><a href="">通知 <span class="badge" id="badge"></span></a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                            <img src="http://jfbbs.tomoya.cn/static/img/default_avatar.png" width="20" style="border-radius: 20px;"/>
+                             ${displayName}
+                            <span class="caret"></span>
+                        </a>
+                        <span class="dropdown-arrow"></span>
+                        <ul class="dropdown-menu">
+                            <li><a href="/springBBS/user/home"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;我的</a></li>
+                            <li><a href="/springBBS/user/profile"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;设置</a></li>
+                            <li><a href=""><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
+                        </ul>
+                    </li>
+            </ul>
   </div>

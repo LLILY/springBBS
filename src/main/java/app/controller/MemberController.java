@@ -23,6 +23,16 @@ public class MemberController {
 	public String index() {
 		return "front/index";
 	}
+	
+	@RequestMapping("/home")
+	public String home(){
+		return "front/user/home";
+	}
+	
+	@RequestMapping("/profile")
+	public String profile(){
+		return "front/user/profile";
+	}
 
 	@RequestMapping("/adminLogin")
 	public String adminLogin(String username, String password) {
