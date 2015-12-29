@@ -15,10 +15,10 @@
       <form class="form-signin" method="get"  action = '/springBBS/user/memberLogin'>
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" id="inputEmail" name="email" class="form-control" value="${email}" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-        <p id="loginTip" class="login-tip"></p>
+        <input type="password" id="inputPassword" name="password" class="form-control" value="${password}" placeholder="Password" required>
+        <p id="loginTip" class="login-tip">${errorMsg}</p>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me

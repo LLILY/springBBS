@@ -7,8 +7,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Repository;
 
-import app.dao.BaseDao;
-import app.dao.Dao;
 import app.model.BaseModel;
 
 @Repository("baseDao")
@@ -33,7 +31,9 @@ public class BaseDaoImpl<T extends BaseModel> implements BaseDao<T> {
 
 	@Override
 	public void delete(T o) {
-		dao.delete(o);
+		// dao.delete(o);
+		o.isDeleted = true;// 删除采用物理删除
+		dao.saveOrUpdate(o);
 
 	}
 
@@ -74,12 +74,14 @@ public class BaseDaoImpl<T extends BaseModel> implements BaseDao<T> {
 	}
 
 	@Override
-	public <T extends BaseModel> List<T> fetch(String hql, Object[] param, Integer page, Integer rows) {
+	public <T extends BaseModel> List<T> fetch(String hql, Object[] param,
+			Integer page, Integer rows) {
 		return dao.find(hql, param, page, rows);
 	}
 
 	@Override
-	public <T extends BaseModel> List<T> fetch(String hql, List<Object> param, Integer page, Integer rows) {
+	public <T extends BaseModel> List<T> fetch(String hql, List<Object> param,
+			Integer page, Integer rows) {
 		return dao.find(hql, param, page, rows);
 	}
 
