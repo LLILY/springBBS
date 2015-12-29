@@ -22,14 +22,8 @@
       <div class="panel-body"> 
        <form id="create_form" action="" method="post"> 
         <select name="sid" id="sid" class="form-control" style="width: 20%; margin-bottom: 5px;"> 
-        	<option value="8">灌水</option> 
-        	<option value="7">资讯</option> 
-        	<option value="9">分享</option> 
-        	<option value="1">问答</option>
+        	<option value="1">帖子</option>
         	 <option value="2">博客</option> 
-        	 <option value="10">二手</option> 
-        	 <option value="11">招聘</option> 
-        	 <option value="12">私活</option> 
        </select> 
        <div>
           <select name="sid" id="sid" class="form-control" style="float:left;width: 20%; margin-bottom: 5px;margin-right:0.5%"> 

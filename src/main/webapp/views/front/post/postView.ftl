@@ -33,7 +33,7 @@
 	 </div>
 	<div class="row page-comments-container">
 			   <div class="col-md-12">
-			   
+			   		<#include "/front/common/comment.ftl">
 			    </div>
    		</div>
    </div>
