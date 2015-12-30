@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +25,14 @@ public class MemberController {
 	public String index() {
 		return "front/index";
 	}
-	
+
 	@RequestMapping("/home")
-	public String home(){
+	public String home() {
 		return "front/user/home";
 	}
-	
+
 	@RequestMapping("/profile")
-	public String profile(){
+	public String profile() {
 		return "front/user/profile";
 	}
 
@@ -41,8 +43,9 @@ public class MemberController {
 	}
 
 	@RequestMapping("/memberLogin")
-	public ModelAndView memberLogin(String email, String password)
-			throws Exception {
+	public ModelAndView memberLogin(String email, String password,
+			HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
 		Member member = memberService.findByEmail(email);
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (member == null || !member.password.equals(password)) {
@@ -52,6 +55,9 @@ public class MemberController {
 			return new ModelAndView("login", map);
 		}
 		map.put("displayName", member.displayName);
+		session.setAttribute("memberId", member.id);
+		session.setAttribute("memberName", member.displayName);
+		session.setAttribute("avatarUrl", member.avatarUrl);
 		return new ModelAndView("front/index", map);
 	}
 

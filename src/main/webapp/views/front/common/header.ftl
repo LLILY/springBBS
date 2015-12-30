@@ -12,18 +12,18 @@
                     <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
                 </div>
             </form>
-    <#if displayName=="">
+     <#if !memberId?exists>  
 	   <ul class="nav navbar-nav navbar-right"> 
 	    <li><a class="btn" href="/Account/Login">登录</a></li> 
 	    <li><a class="btn" href="/Account/Register">注册</a></li> 
 	  </ul> 
-  </#if> 
+   	</#if>  
       <ul class="nav navbar-nav navbar-right">
                     <li ><a href="">通知 <span class="badge" id="badge"></span></a></li>
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                            <img src="http://jfbbs.tomoya.cn/static/img/default_avatar.png" width="20" style="border-radius: 20px;"/>
-                             ${displayName}
+                            <img src="${avatarUrl}" width="20" style="border-radius: 20px;"/>
+                             ${memberName}
                             <span class="caret"></span>
                         </a>
                         <span class="dropdown-arrow"></span>
