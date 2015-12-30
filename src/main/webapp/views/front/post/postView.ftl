@@ -29,13 +29,15 @@
 				     <span class="cat-links"><i class="fa fa-navicon"></i><b>分类:</b><a href="" rel="category tag" target="_self">WEB</a>, <a href="" rel="category tag" target="_self">我的总结</a></span>
 				     <span class="tag-links"><i class="fa fa-tags"></i><b>标签:</b><a href="" rel="tag" target="_self">前端优化</a>, <a href="" rel="tag" target="_self">服务器优化</a>, <a href="" rel="tag" target="_self">网站速度</a></span>
 				    </div>
+				    <div class="row page-comments-container">
+				   <div class="col-md-12">
+				   		
+				   		<#include "/front/common/comment.ftl">
+				    </div>
+	   			</div>
 			</div>
 	 </div>
-	<div class="row page-comments-container">
-			   <div class="col-md-12">
-			   		<#include "/front/common/comment.ftl">
-			    </div>
-   		</div>
+	
    </div>
     </body>
     </html>

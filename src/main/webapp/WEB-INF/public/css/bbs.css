@@ -1,4 +1,4 @@
-
+body{ background:url(../img/whiteBg.png) repeat; font:normal 14px/14px 'Microsoft JhengHei','Microsoft YaHei', Arial, sans-serif; color:#333333;}
 ul, menu, dir {
     display: block;
     list-style:none;

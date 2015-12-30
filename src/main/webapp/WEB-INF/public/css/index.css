@@ -1,5 +1,5 @@
 
-body{background-color:#f5f5f5}
+body{ background:url(../img/whiteBg.png) repeat; font:normal 14px/14px 'Microsoft JhengHei','Microsoft YaHei', Arial, sans-serif; color:#333333;}
 
 .navigation{background-color:#3d85c6;}
 .navigation a{color:#ffffff}

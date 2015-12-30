@@ -11,7 +11,7 @@ $(function() {
 		//创建表情框
 		var faceimg = '';
 	    for(i=0;i<60;i++){  //通过循环创建60个表情，可扩展
-		 faceimg+='<li><a href="javascript:void(0)"><img src="images/face/'+(i+1)+'.gif" face="<emt>'+(i+1)+'</emt>"/></a></li>';
+		 faceimg+='<li><a href="javascript:void(0)"><img src="../public/img/face/'+(i+1)+'.gif" face="<emt>'+(i+1)+'</emt>"/></a></li>';
 		 };
 		$("#"+options.divid).prepend("<div id='SmohanFaceBox'><span class='Corner'></span><div class='Content'><h3><span>常用表情</span><a class='close' title='关闭'></a></h3><ul>"+faceimg+"</ul></div></div>");
 	     $('#SmohanFaceBox').css("display",'none');//创建完成后先将其隐藏
@@ -86,15 +86,6 @@ $(function() {
 		}  
 	});
  
- //表情解析
- $.fn.extend({
-	  replaceface : function(faces){
-		  for(i=0;i<60;i++){
-			  faces=faces.replace('<emt>'+ (i+1) +'</emt>','<img src="images/face/'+(i+1)+'.gif">');
-			  }
-		   $(this).html(faces);
-		   }
-	  });
 	  
   
 });
