@@ -44,7 +44,7 @@ public class MemberController {
 
 	@RequestMapping("/memberLogin")
 	public ModelAndView memberLogin(String email, String password,
-			HttpServletRequest request) throws Exception {
+			HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Member member = memberService.findByEmail(email);
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -62,7 +62,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("/loginPage")
-	public ModelAndView loginPage() throws Exception {
+	public ModelAndView loginPage() {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("email", "");
 		map.put("password", "");
@@ -77,14 +77,18 @@ public class MemberController {
 	}
 
 	@RequestMapping("/regist")
-	public String registUser(String email, String username, String displayName,
-			String password) {
+	public ModelAndView registUser(String email, String username,
+			String displayName, String password) {
 		Member member = memberService.findByUsername(username);
 		if (member == null) {
 			member = Member.create(email, username, displayName, password);
 			memberService.save(member);
 		}
-		return "login";
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("email", "");
+		map.put("password", "");
+		map.put("errorMsg", "");
+		return new ModelAndView("login", map);
 	}
 
 }
