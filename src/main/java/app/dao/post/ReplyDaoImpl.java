@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import app.dao.BaseDaoImpl;
-import app.model.post.ContentItem;
+import app.model.post.Post;
 import app.model.post.Reply;
 
 @Repository("ReplyDao")
@@ -40,11 +40,11 @@ public class ReplyDaoImpl extends BaseDaoImpl implements ReplyDao {
 	}
 
 	@Override
-	public List<Reply> fetchByContentItem(ContentItem contentItem) {
+	public List<Reply> fetchByPost(Post post) {
 		// TODO Auto-generated method stub
 		return (List<Reply>) find(
-				"select r from Reply r where r.isDeleted = false and r.contentItem = ?",
-				contentItem);
+				"select r from Reply r where r.isDeleted = false and r.post = ?",
+				post);
 	}
 
 }
