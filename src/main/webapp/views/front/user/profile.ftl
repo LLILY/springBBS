@@ -65,7 +65,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">修改头像</div>
     <div class="panel-body">
-        <form action="" id="uploadAvatar" method="post" enctype="multipart/form-data">
+        <form  id="uploadAvatar" method="post" enctype="multipart/form-data" action="/springBBS/user/uploadAvatar">
             <div class="form-group">
                 <label for="avatar">选择图片</label>
                 <input type="file" name="avatar" id="avatar">
