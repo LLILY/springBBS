@@ -8,13 +8,14 @@ import app.model.member.Member;
 @Entity
 public class Reply extends ContentItem {
 	@ManyToOne
-	public Post post;
+	public ContentItem contentItem;
 
-	public static Reply add(String content, Member member, Post post) {
+	public static Reply add(String content, Member member,
+			ContentItem contentItem) {
 		Reply reply = new Reply();
 		reply.content = content;
 		reply.creator = member;
-		reply.post = post;
+		reply.contentItem = contentItem;
 		return reply;
 	}
 }

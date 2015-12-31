@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import app.dao.post.ReplyDao;
-import app.model.post.Post;
+import app.model.post.ContentItem;
 import app.model.post.Reply;
 
 @Service("ReplyService")
@@ -41,9 +41,9 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<Reply> fetchByPost(Post post) {
+	public List<Reply> fetchByContentItem(ContentItem contentItem) {
 		// TODO Auto-generated method stub
-		return replyDao.fetchByPost(post);
+		return replyDao.fetchByContentItem(contentItem);
 	}
 
 }

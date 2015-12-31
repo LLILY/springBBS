@@ -2,7 +2,7 @@ package app.dao.post;
 
 import java.util.List;
 
-import app.model.post.Post;
+import app.model.post.ContentItem;
 import app.model.post.Reply;
 
 public interface ReplyDao {
@@ -14,6 +14,6 @@ public interface ReplyDao {
 
 	public Reply findById(Long id);
 
-	public List<Reply> fetchByPost(Post post);
+	public List<Reply> fetchByContentItem(ContentItem contentItem);
 
 }
