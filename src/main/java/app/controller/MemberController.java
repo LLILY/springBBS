@@ -55,8 +55,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("/memberLogin")
-	public ModelAndView memberLogin(String email, String password,
-			HttpServletRequest request) {
+	public ModelAndView memberLogin(String email, String password, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Member member = memberService.findByEmail(email);
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -89,8 +88,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("/regist")
-	public ModelAndView registUser(String email, String username,
-			String displayName, String password) {
+	public ModelAndView registUser(String email, String username, String displayName, String password) {
 		Member member = memberService.findByUsername(username);
 		if (member == null) {
 			member = Member.create(email, username, displayName, password);
@@ -104,17 +102,15 @@ public class MemberController {
 	}
 
 	@RequestMapping("")
-	public String uploadAvatar(File avatarImg) throws ClientProtocolException,
-			IOException, Exception {
+	public String uploadAvatar(File avatarImg) throws ClientProtocolException, IOException, Exception {
 		System.err.println(avatarImg + "    avatarImg");
 		String url = PicUploadUtils.postFile(avatarImg);
 		return url;
 	}
 
 	@RequestMapping("/uploadAvatar")
-	public String upload2(HttpServletRequest request,
-			HttpServletResponse response) throws IllegalStateException,
-			Exception {
+	public String upload2(HttpServletRequest request, HttpServletResponse response)
+			throws IllegalStateException, Exception {
 		// 创建一个通用的多部分解析器
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 				request.getSession().getServletContext());
@@ -135,8 +131,7 @@ public class MemberController {
 					if (myFileName.trim() != "") {
 						System.out.println(myFileName);
 						// 重命名上传后的文件名
-						String fileName = "demoUpload"
-								+ file.getOriginalFilename();
+						String fileName = "demoUpload" + file.getOriginalFilename();
 						// 定义上传路径
 						InputStream inputStream = file.getInputStream();
 						File localFile = inputstreamtofile(inputStream);

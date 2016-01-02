@@ -51,6 +51,7 @@
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdn.bootcss.com/strophe.js/1.2.3/strophe.js"></script>
     <script src="<@spring.url'/public/js/module/jquery-2.1.4.js'/>" type="text/javascript"></script>
     <script src="<@spring.url'/public/bootstrap/js/bootstrap.min.js'/>"></script>
     <script src="<@spring.url'/public/js/login.js'/>" type="text/javascript"></script>
