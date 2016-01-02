@@ -57,4 +57,11 @@ public class MemberDaoImpl extends BaseDaoImpl implements MemberDao {
 		save(m);
 	}
 
+	@Override
+	public void editAvatar(Member m, String avatar) {
+		// TODO Auto-generated method stub
+		m.avatarUrl = avatar;
+		save(m);
+	}
+
 }

@@ -48,4 +48,10 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.editPassword(m, password);
 	}
 
+	@Override
+	public void editAvatar(Member m, String avatar) {
+		memberDao.editAvatar(m, avatar);
+
+	}
+
 }
