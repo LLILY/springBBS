@@ -8,9 +8,9 @@
 			        <div class="panel-body">
 			            <div>
 			                <a href="">
-			                    <img src="" title="记忆_淡忘" width="48">
+			                    <img src="${(member.getAvatarUrl())!""}"  width="48">
 			                </a>&nbsp;
-			                <span><a href="">记忆_淡忘</a></span>
+			                <span><a href="">${(member.getDisPlayName())!""}</a></span>
 			                <div style="margin-top: 10px;">
 			                    <div>积分: 16 </div>
 			                </div>

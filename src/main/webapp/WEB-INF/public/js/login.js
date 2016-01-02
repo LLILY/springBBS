@@ -6,3 +6,7 @@ $('#inputEmail').on('mousedown',function(){
 $('#inputPassword').on('mousedown',function(){
 	$('#loginTip').html('');
 })
+
+  $(userInfoForm).find("input").each(function(){
+	  $("#this").val("");
+  });

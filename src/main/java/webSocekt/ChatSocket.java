@@ -45,7 +45,6 @@ public class ChatSocket {
 		Long memberId = (Long) httpSession.getAttribute("memberId");
 		String queryString = session.getQueryString();
 		System.out.println(queryString);
-		names.add(this.username);
 
 		Message message = new Message();
 		message.setNames(names);
@@ -59,7 +58,6 @@ public class ChatSocket {
 
 		Message message = new Message();
 		message.setSendMsg(msg);
-		message.setFrom(this.username);
 		message.setDate(new Date().toLocaleString());
 
 		broadcast(sockets, gson.toJson(message));
@@ -68,10 +66,8 @@ public class ChatSocket {
 	@OnClose
 	public void close(Session session) {
 		sockets.remove(this);
-		names.remove(this.username);
 
 		Message message = new Message();
-		message.setAlert(this.username + "�˳������ң���");
 		message.setNames(names);
 
 		broadcast(sockets, gson.toJson(message));

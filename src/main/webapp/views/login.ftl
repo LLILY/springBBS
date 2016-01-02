@@ -12,7 +12,7 @@
 </head>
   <body>
    <div class="container" style="width:450px;border:1px solid black">
-      <form class="form-signin" method="get"  action = '/springBBS/user/memberLogin'>
+      <form id="userInfoForm" name="userInfoForm" class="form-signin" autocomplete="off" method="get"  action = '/springBBS/user/memberLogin'>
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" name="email" class="form-control" value="${email}" placeholder="Email address" required autofocus>

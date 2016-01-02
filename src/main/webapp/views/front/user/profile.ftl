@@ -23,40 +23,40 @@
     <div class="panel-body">
         <div class="alert alert-success hidden" id="setSuccess" role="alert">保存成功。</div>
         <div class="alert alert-danger hidden" id="setFailure" role="alert">保存失败。<i id="setErrMsg"></i></div>
-        <form class="form form-horizontal" id="form" method="post" style="margin-top: 20px;">
+        <form class="form form-horizontal" id="form" method="post" style="margin-top: 20px;"  action = '/springBBS/user/editMemberInfo'>
             <div class="form-group">
                 <label class="control-label col-sm-2">昵称</label>
-
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="nickname" id="nickname" value="记忆_淡忘">
+                	 <input type="text" class="form-control hidden" name="memberId" id="nickname" value="${member.id}" >
+                    <input type="text" class="form-control" name="displayName" id="nickname" value="${member.getDisPlayName()!""}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">电子邮件</label>
 
                 <div class="col-sm-5">
-                    <input type="email" class="form-control" disabled value="942212309@qq.com">
+                    <input type="email" class="form-control" disabled value="${member.getEmail()!""}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">个人网站</label>
 
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="url" id="url" value="">
+                    <input type="text" class="form-control" name="profileName" id="url" value="${member.getProfileName()!""}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">个性签名</label>
 
                 <div class="col-sm-5">
-                    <textarea name="signature" id="signature" class="form-control"></textarea>
+                    <textarea name="signature" id="signature" class="form-control">${member.getSignature()!""}</textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">&nbsp;</label>
 
                 <div class="col-sm-4">
-                    <button type="button" id="saveBtn" onclick="saveSetting()" class="btn btn-info btn-sm">保存设置</button>
+                    <button type="submit" id="saveBtn"  class="btn btn-info btn-sm">保存设置</button>
                 </div>
             </div>
         </form>
