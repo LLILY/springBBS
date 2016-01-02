@@ -40,4 +40,21 @@ public class MemberDaoImpl extends BaseDaoImpl implements MemberDao {
 
 	}
 
+	@Override
+	public Member findById(Long memberId) {
+		// TODO Auto-generated method stub
+		return (Member) find("select ml from Member ml where ml.id = ?",
+				memberId);
+	}
+
+	@Override
+	public void editMemberInfo(Member m, String displayName,
+			String profileName, String signature) {
+		// TODO Auto-generated method stub
+		m.displayName = displayName;
+		m.profileName = profileName;
+		m.signature = signature;
+		save(m);
+	}
+
 }

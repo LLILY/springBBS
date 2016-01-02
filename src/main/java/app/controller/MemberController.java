@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.http.client.ClientProtocolException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,8 +45,18 @@ public class MemberController {
 	}
 
 	@RequestMapping("/profile")
-	public String profile() {
-		return "front/user/profile";
+	public ModelAndView profile(Long memberId) {
+		Member member = memberService.findById(memberId);
+		return new ModelAndView("front/user/profile", "member", member);
+	}
+
+	@RequestMapping("/editMemberInfo")
+	public ModelAndView editMemberInfo(Long memberId, String displayName,
+			String profileName, String signature) {
+		Member member = memberService.findById(memberId);
+		memberService.editMemberInfo(member, displayName, profileName,
+				signature);
+		return new ModelAndView("front/user/profile", "member", member);
 	}
 
 	@RequestMapping("/adminLogin")
@@ -84,23 +95,29 @@ public class MemberController {
 
 	@RequestMapping("/registPage")
 	public String registPage() {
-		// Member member = memberService.findByLoginId(username);
 		return "regist";
 	}
 
 	@RequestMapping("/regist")
 	public ModelAndView registUser(String email, String username,
 			String displayName, String password) {
-		Member member = memberService.findByUsername(username);
+		Member member = memberService.findByEmail(email);
+		Map<String, Object> map = new HashMap<String, Object>();
 		if (member == null) {
 			member = Member.create(email, username, displayName, password);
 			memberService.save(member);
+			map.put("email", "");
+			map.put("password", "");
+			map.put("errorMsg", "");
+			return new ModelAndView("login", map);
+		} else {
+			map.put("email", email);
+			map.put("username", username);
+			map.put("displayName", displayName);
+			map.put("password", password);
+			map.put("errorMsg", "邮箱已注册");
+			return new ModelAndView("regist", map);
 		}
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("email", "");
-		map.put("password", "");
-		map.put("errorMsg", "");
-		return new ModelAndView("login", map);
 	}
 
 	@RequestMapping("")
@@ -133,16 +150,17 @@ public class MemberController {
 					String myFileName = file.getOriginalFilename();
 					// 如果名称不为“”,说明该文件存在，否则说明该文件不存在
 					if (myFileName.trim() != "") {
-						System.out.println(myFileName);
 						// 重命名上传后的文件名
 						String fileName = "demoUpload"
 								+ file.getOriginalFilename();
 						// 定义上传路径
 						InputStream inputStream = file.getInputStream();
-						File localFile = inputstreamtofile(inputStream);
+						File localFile = inputstreamtofile(inputStream,
+								myFileName);
 						file.transferTo(localFile);
-
 						String url = PicUploadUtils.postFile(localFile);
+						// 删除新建的文件localFile
+						FileUtils.deleteQuietly(localFile);
 					}
 				}
 			}
@@ -154,8 +172,9 @@ public class MemberController {
 		return "/success";
 	}
 
-	public static File inputstreamtofile(InputStream ins) throws Exception {
-		File file = new File("/Users/lily/upload.png");
+	public static File inputstreamtofile(InputStream ins, String myFileName)
+			throws Exception {
+		File file = new File(myFileName);
 		OutputStream os = new FileOutputStream(file);
 		int bytesRead = 0;
 		byte[] buffer = new byte[8192];

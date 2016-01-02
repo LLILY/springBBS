@@ -35,6 +35,8 @@ public class Member extends BaseModel {
 
 	public String weiboUrl;
 
+	public String signature;// 个性签名
+
 	public enum Sex {
 		NoPoint {
 			@Override
@@ -68,6 +70,118 @@ public class Member extends BaseModel {
 				return NoPoint;
 			}
 		}
+	}
+
+	public String getDisPlayName() {
+		return this.displayName;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+	public String getAvatarUrl() {
+		return avatarUrl;
+	}
+
+	public void setAvatarUrl(String avatarUrl) {
+		this.avatarUrl = avatarUrl;
+	}
+
+	public String getProfileName() {
+		return profileName;
+	}
+
+	public void setProfileName(String profileName) {
+		this.profileName = profileName;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getLastLoginIp() {
+		return lastLoginIp;
+	}
+
+	public void setLastLoginIp(String lastLoginIp) {
+		this.lastLoginIp = lastLoginIp;
+	}
+
+	public Long getLoginCount() {
+		return loginCount;
+	}
+
+	public void setLoginCount(Long loginCount) {
+		this.loginCount = loginCount;
+	}
+
+	public Date getLastLoginTime() {
+		return lastLoginTime;
+	}
+
+	public void setLastLoginTime(Date lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
+
+	public Sex getSex() {
+		return sex;
+	}
+
+	public void setSex(Sex sex) {
+		this.sex = sex;
+	}
+
+	public String getWeiboUrl() {
+		return weiboUrl;
+	}
+
+	public void setWeiboUrl(String weiboUrl) {
+		this.weiboUrl = weiboUrl;
+	}
+
+	public void setDisPlayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+	public String getSignature() {
+		return signature;
+	}
+
+	public void setSignature(String signature) {
+		this.signature = signature;
 	}
 
 	public static Member create(String email, String username,

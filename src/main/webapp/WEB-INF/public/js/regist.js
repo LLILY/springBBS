@@ -5,6 +5,11 @@ function checkUser(){
 	   alert("邮箱不能为空");
 	   return false;
    }
+   var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+   if (!filter.test(email)){ 
+	   alert('您的电子邮件格式不正确');
+	   return false;
+   }
    if(username.length==0 ){
 	   alert("用户名不能为空");
 	   return false;
