@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import app.dao.post.PostDao;
 import app.model.member.Member;
 import app.model.post.Post;
+import app.model.post.Post.Category;
 
 @Service("PostService")
 public class PostServiceImpl implements PostService {
@@ -29,9 +30,9 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> fetchByCreator(Member member) {
+	public List<Post> fetchByCreatorAndCategory(Member member, Category category) {
 		// TODO Auto-generated method stub
-		return postDao.fetchByCreator(member);
+		return postDao.fetchByCreatorAndCategory(member, category);
 	}
 
 	@Override

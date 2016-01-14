@@ -1,6 +1,7 @@
 package app.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import app.model.member.Member;
+import app.model.post.Post;
+import app.model.post.Post.Category;
 import app.service.member.MemberService;
+import app.service.post.PostService;
 
 @Controller
 @RequestMapping("/user")
@@ -21,6 +25,8 @@ public class MemberController {
 
 	@Resource
 	public MemberService memberService;
+	@Resource
+	public PostService postService;
 
 	@RequestMapping("/index")
 	public String index() {
@@ -28,8 +34,15 @@ public class MemberController {
 	}
 
 	@RequestMapping("/home")
-	public String home() {
-		return "front/user/home";
+	public ModelAndView home(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Long memberId = (Long) session.getAttribute("memberId");
+		Member member = memberService.findById(memberId);
+		List<Post> postList = postService.fetchByCreatorAndCategory(member,
+				Category.博客);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("postList", postList);
+		return new ModelAndView("front/user/home", map);
 	}
 
 	@RequestMapping("/profile")

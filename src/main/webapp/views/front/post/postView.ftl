@@ -16,22 +16,21 @@
     <div class="container-fluid main-container" id="J_main-container">
     	<div class="row">
     			<#include "/front/common/rightSide.ftl">
-			   <div class="col-md-9 post-container">
-			    	<h2 class="post-title"><a href="" rel="bookmark">天下武功，唯快不破</a></h2>
+			   <div id="postDiv" class="col-md-9 post-container" data="${post.id}">
+			    	<h2 class="post-title"><a href="" rel="bookmark">${post.title}</a></h2>
 				    <div class="meta-box">
 				     	 <span class="m-post-date"><i class="fa fa-calendar-o"></i> 2015年1月10日</span>
 				    	 <span class="comments-link"><a href="" class="ds-thread-count" data-thread-key="9378" title="Comment on 天下武功，唯快不破" target="_self">27条评论</a></span>
 				    </div>
 				    <div class="post-content">
-				    	<p>不知道从什么时候开始，不管是写独立博客，还是网络应用，甚至写托管博客的人都会朝着“大”网站看齐，去追求网站的响应速度，通俗点说，就是白屏时间，因为据各种报告说，网站打开速度更快一些，带来的用户体验就更好一些，从而带来更多的附加利益。但是对于用户来说，快，并不是简简单单请求数目尽可能少，和服务器吞吐能力尽可能大。那么，怎么快？</p>
+				    	<p>${(post.content)!""}</p>
 				    </div>
 				    <div class="meta-box">
 				     <span class="cat-links"><i class="fa fa-navicon"></i><b>分类:</b><a href="" rel="category tag" target="_self">WEB</a>, <a href="" rel="category tag" target="_self">我的总结</a></span>
-				     <span class="tag-links"><i class="fa fa-tags"></i><b>标签:</b><a href="" rel="tag" target="_self">前端优化</a>, <a href="" rel="tag" target="_self">服务器优化</a>, <a href="" rel="tag" target="_self">网站速度</a></span>
+				     <span class="tag-links"><i class="fa fa-tags"></i><b>标签:</b>${post.tag}</span>
 				    </div>
 				    <div class="row page-comments-container">
 				   <div class="col-md-12">
-				   		
 				   		<#include "/front/common/comment.ftl">
 				    </div>
 	   			</div>
