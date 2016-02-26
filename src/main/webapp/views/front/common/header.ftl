@@ -22,7 +22,7 @@
                     <li ><a href="">通知 <span class="badge" id="badge"></span></a></li>
                     <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                            <img src="${avatarUrl!"http://jfbbs.tomoya.cn/static/img/default_avatar.png"}" width="20" style="border-radius: 20px;"/>
+                            <img id="avatarImg" src="${(member.getAvatarUrl())!'http://jfbbs.tomoya.cn/static/img/default_avatar.png'}" width="20" style="border-radius: 20px;"/>
                              ${memberName!""}
                             <span class="caret"></span>
                         </a>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import app.dao.BaseDaoImpl;
 import app.model.member.Member;
 import app.model.post.Post;
+import app.model.post.Post.Category;
 
 @Repository("PostDao")
 @SuppressWarnings("all")
@@ -28,11 +29,11 @@ public class PostDaoImpl extends BaseDaoImpl implements PostDao {
 	}
 
 	@Override
-	public List<Post> fetchByCreator(Member member) {
+	public List<Post> fetchByCreatorAndCategory(Member member, Category category) {
 		// TODO Auto-generated method stub
-		return (List<Post>) find(
-				"select p from Post p where p.isDeleted = false and p.creator = ?",
-				member);
+		return (List<Post>) fetch(
+				"select p from Post p where p.isDeleted = false and p.creator = ? and p.category=?",
+				member, category);
 	}
 
 	@Override

@@ -23,9 +23,9 @@
     </div>
     <div class="panel-body">
         <a href="">
-            <img src="" title="记忆_淡忘" width="48">
+            <img src="${(member.avatarUrl)!""}" width="48">
         </a>&nbsp;
-        <span><a href="">记忆_淡忘</a></span>
+        <span><a href="">${(member.displayName)!""}</a></span>
         <div>
         </div>
         <div style="margin-top: 10px;">
@@ -56,6 +56,7 @@
 				        最近创建的博客
 				    </div>
 				    <table class="table table-hover">
+				    <#list postList as post>
 				    		<tr>
 				                <td style="padding-left: 10px; width: 45px;">
 				                    <a href="/springBBS/user/home">
@@ -67,16 +68,17 @@
 				                </td>
 				                <td style="width: 40px;">
 				                        <span class="label label-default">
-				                        灌水
+				                        ${post.tag!""}
 				                        </span>
 				                </td>
-				                <td><a href="/springBBS/post/view">markdown 是用的插件还是自己模拟实现的？</a></td>
+				                <td><a href="/springBBS/post/view?postId=${post.id}">${(post.title)!""}</a></td>
 				                <td align="right">
 				                </td>
 				                <td style="width: 70px;">
-				                    <script>document.write(formatDateTime('2015-12-28 21:18:42'))</script>刚刚
+				                    <script></script>刚刚
 				                </td>
-				               </tr>
+				            </tr>
+				       </#list>
 				    </table>
 				    <div style="padding: 10px;">
 				        <a class="dark" href="">查看更多&gt;&gt;</a>

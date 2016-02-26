@@ -6,6 +6,8 @@ public interface MemberService {
 
 	public void save(Member m);
 
+	public void editAvatar(Member m, String avatar);
+
 	public void editMemberInfo(Member m, String displayName,
 			String profileName, String signature);
 

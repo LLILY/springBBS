@@ -21,25 +21,25 @@
     </div>
       <div class="panel-body"> 
        <form id="create_form" action="" method="post"> 
-        <select name="sid" id="sid" class="form-control" style="width: 20%; margin-bottom: 5px;"> 
+        <select id="categorySwitch" class="form-control" style="width: 20%; margin-bottom: 5px;"> 
         	<option value="1">帖子</option>
         	 <option value="2">博客</option> 
        </select> 
        <div>
-          <select name="sid" id="sid" class="form-control" style="float:left;width: 20%; margin-bottom: 5px;margin-right:0.5%"> 
-        	<option value="8">原创</option> 
-        	<option value="7">转载</option> 
-        	<option value="9">翻译</option> 
+          <select id="sourceSwitch" class="form-control" style="float:left;width: 20%; margin-bottom: 5px;margin-right:0.5%"> 
+        	<option value="1">原创</option> 
+        	<option value="2">转载</option> 
+        	<option value="3">翻译</option> 
        </select> 
         <input type="text" placeholder="标题字数10字以上" id="title" name="title" class="form-control" style="width: 79.5%;margin-bottom: 5px;" /> 
        </div>
-        <input type="text" placeholder="文章标签（最多添加5个标签，多个标签之间用）“,”分隔" id="label" name="" class="form-control" style="margin-bottom: 5px;" /> 
+        <input type="text" placeholder="文章标签（最多添加5个标签，多个标签之间用）“,”分隔" id="tagInput" class="form-control" style="margin-bottom: 5px;" /> 
         <input type="text" placeholder="原文地址（原创可不写）" id="original_url" name="original_url" class="form-control" style="margin-bottom: 5px;" /> 
         <div style="margin-bottom: 5px;"> 
          <textarea id="content" name="content" class="form-control" style="height: 400px;"></textarea> 
         </div> 
-        <input type="button"  value="提  交" class="btn btn-primary btn-sm" /> 
-        <input type="button"  value="预  览" class="btn btn-primary btn-sm pull-right" /> 
+        <input id="submitPost" type="button"  value="提  交" class="btn btn-primary btn-sm"  data="${memberId!""}"/> 
+        <input id="previewPost" type="button"  value="预  览" class="btn btn-primary btn-sm pull-right" /> 
         <div id="preview_content" class="hidden"></div> 
        </form> 
       </div> 
@@ -82,7 +82,8 @@
   </div> 
 <script src="<@spring.url'/public/xheditor-1.1.14/jquery/jquery-1.4.4.min.js'/>" type="text/javascript"></script>
 <script src="<@spring.url'/public/xheditor-1.1.14/xheditor-1.1.14-zh-cn.min.js'/>" type="text/javascript"></script>
-  <script src="<@spring.url'/public/js/module/bootstrap-hover-dropdown.min.js'/>"></script>
+<script src="<@spring.url'/public/js/module/bootstrap-hover-dropdown.min.js'/>"></script>
+<script src="<@spring.url'/public/js/post.js'/>"></script>
 <style type="text/css">  
      /* 增加插入代码工具图标 */  
     .btnCode {  

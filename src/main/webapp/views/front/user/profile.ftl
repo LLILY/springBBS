@@ -10,6 +10,7 @@
    <link href="<@spring.url'/public/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet" media="screen"/>
       <link href="<@spring.url'/public/bootstrap/css/bootstrap-theme.css'/>" rel="stylesheet" media="screen"/>
    <link href="<@spring.url'/public/css/index.css'/>" rel="stylesheet" media="screen"/>
+   <link href="<@spring.url'/public/js/uploadify/uploadify.css'/>" rel="stylesheet" media="screen"/>
 </head>
   <body>
     <#include "/front/common/header.ftl">
@@ -62,17 +63,14 @@
         </form>
     </div>
 </div>
-<div class="panel panel-default">
+<div id="avatarDiv" class="panel panel-default" data="${member.id}">
     <div class="panel-heading">修改头像</div>
     <div class="panel-body">
-        <form  id="uploadAvatar" method="post" enctype="multipart/form-data" action="/springBBS/user/uploadAvatar">
-            <div class="form-group">
-                <label for="avatar">选择图片</label>
-                <input type="file" name="avatar" id="avatar">
-                <p class="help-block">请选择正方形图片，否则会出现变形，支持格式：.gif.jpg.png.jpeg</p>
-            </div>
-            <button type="submit" class="btn btn-info btn-sm">上传</button>
-        </form>
+        <div class="form-group">
+            <label for="avatar">选择图片</label>
+            <p class="help-block">请选择正方形图片，否则会出现变形，支持格式：.gif.jpg.png.jpeg</p>
+        </div>
+        <button id="submitAvatar" type="button" class="btn btn-info btn-sm">上传</button>
     </div>
 </div>
 <div class="panel panel-default">
@@ -101,5 +99,57 @@
     <script src="<@spring.url'/public/js/module/jquery-2.1.4.js'/>" type="text/javascript"></script>
     <script src="<@spring.url'/public/bootstrap/js/bootstrap.min.js'/>"></script>
     <script src="<@spring.url'/public/js/module/bootstrap-hover-dropdown.min.js'/>"></script>
+    <script src="<@spring.url'/public/js/uploadify/jquery.uploadify.min.js'/>"></script>
+    <script>
+	    function getRootPath(){
+	        //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
+	        var curWwwPath=window.document.location.href;
+	        //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+	        var pathName=window.document.location.pathname;
+	        var pos=curWwwPath.indexOf(pathName);
+	        //获取主机地址，如： http://localhost:8083
+	        var localhostPaht=curWwwPath.substring(0,pos);
+	        //获取带"/"的项目名，如：/uimcardprj
+	        var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+	       // projectName = "//* AircrewHealth ;
+	        return(localhostPaht+"/springBBS");
+	    };
+    	var  submitAvatar=function(){
+    		var url=getRootPath()+'/public/js/uploadify/uploadify.swf';
+    		var postUrl=getRootPath()+'/user/editMemberAvatar';
+    		$("#submitAvatar").uploadify({
+					multi : false,
+					buttonClass : 'btn-book',
+					checkExisting : false,
+					fileObjName : 'qqfile',
+					width : 95,
+					height : 30,
+					formData : {bucketName: "webooks", source: "WEBOOK"},
+					buttonText : '上传图片',
+					fileSizeLimit : '20MB',//上传文件大小限制
+					fileTypeDesc : '语音文件',
+					fileTypeExts : '*.jpg;*.jpeg;*.png;',//文件类型过滤
+					swf :url,
+					uploader:"http://oss.joy-read.com/formImage",
+					queueID : "UploadQueue",
+					onUploadSuccess : function(file,data,response){
+						var jsonobj=eval('('+data+')');
+						var avatar = jsonobj.html,fileName =file.name,memberId=$("#avatarDiv").attr("data");
+						$.post("editMemberAvatar", {
+							memberId : memberId,
+							avatar : avatar,
+						}, function(json) {
+							if(json==true){
+								$("#avatarUrl").attr("src",avatar);
+								$("#avatarImg").attr("src",avatar);
+							}else{
+								alert("更改头像失败，请重新上传");
+							}
+						}, "json");
+					}
+    		});
+    	}
+    	submitAvatar();
+    </script>
    </body>
    </html>

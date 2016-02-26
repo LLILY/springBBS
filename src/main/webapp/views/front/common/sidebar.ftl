@@ -8,7 +8,7 @@
 			        <div class="panel-body">
 			            <div>
 			                <a href="">
-			                    <img src="${(member.getAvatarUrl())!""}"  width="48">
+			                    <img id="avatarUrl" src="${(member.getAvatarUrl())!""}"  width="48">
 			                </a>&nbsp;
 			                <span><a href="">${(member.getDisPlayName())!""}</a></span>
 			                <div style="margin-top: 10px;">
