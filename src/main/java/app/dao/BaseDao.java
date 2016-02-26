@@ -28,11 +28,9 @@ public interface BaseDao<T> {
 
 	public <T extends BaseModel> List<T> fetch(String hql, List<Object> param);
 
-	public <T extends BaseModel> List<T> fetch(String hql, Object[] param,
-			Integer page, Integer rows);
+	public <T extends BaseModel> List<T> fetch(String hql, Object[] param, Integer page, Integer rows);
 
-	public <T extends BaseModel> List<T> fetch(String hql, List<Object> param,
-			Integer page, Integer rows);
+	public <T extends BaseModel> List<T> fetch(String hql, List<Object> param, Integer page, Integer rows);
 
 	public Long count(String hql);
 

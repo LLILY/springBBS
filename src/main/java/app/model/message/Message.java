@@ -1,27 +1,36 @@
 package app.model.message;
 
-import java.util.Date;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 
-public class Message {
+import app.enums.MessageType;
+import app.model.BaseModel;
+import app.model.member.Member;
 
-	private  String  alert;   //
-	
-	private  List<String>  names;
-	
-	private  String  sendMsg;
-	
-	private String  from;
-	
-	private String  date;
-	
-	
-	public String getDate() {
-		return date;
-	}
+@Entity
+public class Message extends BaseModel {
 
-	public void setDate(String date) {
-		this.date = date;
+	@Column(length = 2000)
+	public String sendMsg;
+
+	@ManyToOne
+	public Member sender;
+	@ManyToOne
+	public Member receiver;
+
+	@Enumerated(EnumType.STRING)
+	public MessageType type;
+
+	public static Message createMessage(String sendMsg, Member sender, Member receiver, MessageType type) {
+		Message message = new Message();
+		message.sender = sender;
+		message.receiver = receiver;
+		message.sendMsg = sendMsg;
+		message.type = type != null ? type : MessageType.Text;
+		return message;
 	}
 
 	public String getSendMsg() {
@@ -32,37 +41,19 @@ public class Message {
 		this.sendMsg = sendMsg;
 	}
 
-	public String getFrom() {
-		return from;
+	public Member getSender() {
+		return sender;
 	}
 
-	public void setFrom(String from) {
-		this.from = from;
+	public void setSender(Member sender) {
+		this.sender = sender;
 	}
 
-	public String getAlert() {
-		return alert;
+	public Member getReceiver() {
+		return receiver;
 	}
 
-	public void setAlert(String alert) {
-		this.alert = alert;
+	public void setReceiver(Member receiver) {
+		this.receiver = receiver;
 	}
-
-	public List<String> getNames() {
-		return names;
-	}
-
-	public void setNames(List<String> names) {
-		this.names = names;
-	}
-
-	public Message() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
-	
-	
 }

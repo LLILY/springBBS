@@ -74,14 +74,12 @@ public class BaseDaoImpl<T extends BaseModel> implements BaseDao<T> {
 	}
 
 	@Override
-	public <T extends BaseModel> List<T> fetch(String hql, Object[] param,
-			Integer page, Integer rows) {
+	public <T extends BaseModel> List<T> fetch(String hql, Object[] param, Integer page, Integer rows) {
 		return dao.find(hql, param, page, rows);
 	}
 
 	@Override
-	public <T extends BaseModel> List<T> fetch(String hql, List<Object> param,
-			Integer page, Integer rows) {
+	public <T extends BaseModel> List<T> fetch(String hql, List<Object> param, Integer page, Integer rows) {
 		return dao.find(hql, param, page, rows);
 	}
 

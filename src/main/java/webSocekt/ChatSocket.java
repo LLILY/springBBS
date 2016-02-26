@@ -1,88 +1,72 @@
 package webSocekt;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
+import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.gson.Gson;
 
-import app.model.message.Message;
+import app.service.member.MemberService;
 
-@ServerEndpoint("/chatSocket")
+@ServerEndpoint("/chatSocket/{userId}")
 public class ChatSocket {
 
-	private static Set<ChatSocket> sockets = new HashSet<ChatSocket>();
-	// private static Map<String, ChatSocket> sMap = new HashMap<String,
-	// ChatSocket>();
+	private static Map<Long, ChatSocket> socketMap = new HashMap<Long, ChatSocket>();
 
-	private static List<String> names = new ArrayList<String>();
+	@Resource
+	public MemberService memberService;
+	@Autowired
+	HttpServletRequest request;
 	private Session session;
 	private Gson gson = new Gson();
-	private HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-			.getRequest();
-	private HttpSession httpSession;
 
 	@OnOpen
-	public void open(Session session) {
+	public void open(@PathParam("userId") Long userId, Session session) {
 		this.session = session;
-		sockets.add(this);
-		HttpSession httpSession = request.getSession();
-		Long memberId = (Long) httpSession.getAttribute("memberId");
-		String queryString = session.getQueryString();
-		System.out.println(queryString);
-
-		Message message = new Message();
-		message.setNames(names);
-
-		broadcast(sockets, gson.toJson(message));
+		socketMap.put(userId, this);
+		SocketUtil.put(userId, session);
+		// System.err.println("================" + userId);
 
 	}
 
 	@OnMessage
 	public void receive(Session session, String msg) {
 
-		Message message = new Message();
-		message.setSendMsg(msg);
-		message.setDate(new Date().toLocaleString());
-
-		broadcast(sockets, gson.toJson(message));
 	}
 
 	@OnClose
-	public void close(Session session) {
-		sockets.remove(this);
-
-		Message message = new Message();
-		message.setNames(names);
-
-		broadcast(sockets, gson.toJson(message));
+	public void close(@PathParam("userId") Long userId, Session session) {
+		System.err.println("================" + userId);
+		SocketUtil.remove(userId);
+		// for (Map.Entry<Long, ChatSocket> entry : socketMap.entrySet()) {
+		// if (entry.getValue().session == session) {
+		// socketMap.remove(entry.getKey());
+		//
+		// }
+		// }
 	}
 
-	public void broadcast(Set<ChatSocket> ss, String msg) {
-
-		for (Iterator iterator = ss.iterator(); iterator.hasNext();) {
-			ChatSocket chatSocket = (ChatSocket) iterator.next();
+	public void broadcast(Long memberId, String message) {
+		ChatSocket chat = socketMap.get(memberId);
+		if (chat != null) {
 			try {
-				chatSocket.session.getBasicRemote().sendText(msg);
+				chat.session.getBasicRemote().sendText(message);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+
 	}
 
 }

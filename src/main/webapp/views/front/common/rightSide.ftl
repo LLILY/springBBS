@@ -14,7 +14,7 @@
 			</div>
 			<div class="interact">
 			    <a href="javascript:void(0);" class="btn btn-primary" id="span_add_follow" title="[加关注]"><span>加关注</span></a>
-			 	<a href="javascript:void(0);" class="btn btn-success" title="[发私信]"><span>发私信</span></a>  
+			 	<a href="/springBBS/chat/singleChat/2" target="_blank"  class="btn btn-success" title="[发私信]"><span>发私信</span></a>  
 			</div>
 			<ul id="blog_rank">
 			    <li>访问：<span>895884次</span></li>

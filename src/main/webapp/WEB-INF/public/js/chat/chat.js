@@ -1,79 +1,46 @@
-function message() {
-	var a = $.blinkTitle.show();
-	setTimeout(function() {
-		$.blinkTitle.clear(a)
-	}, 8e3)
+function appendMessage(message,flag){
+	  var messageHtml='<li class="'+(flag?"current-user":"") +'"> <img width="30" height="30" src="'+message.senderImg+' ">'+
+		                    	'<div class="bubble"><a class="user-name" href="#">'+message.senderName+'</a>'+
+		                    	'<p class="message">'+message.sendMsg +'</p>'+
+		                    	'<p class="time">' + message.createTime +'</p>'+
+		                    '</div> </li>';
+	  return messageHtml;
 }
-$(document).ready(function() {
-	function e() {
-		function h() {
-			-1 != g.indexOf("*#emo_") && (g = g.replace("*#", "<img src='../public/img/chat/").replace("#*", ".gif'/>"), h())
-		}
-		var e = new Date,
-			f = "";
-		f += e.getFullYear() + "-", f += e.getMonth() + 1 + "-", f += e.getDate() + "  ", f += e.getHours() + ":", f += e.getMinutes() + ":", f += e.getSeconds();
-		var g = $("#textarea").val();
-		h();
-		var i = "<div class='message clearfix'><div class='user-logo'><img src='" + b + "'/>" + "</div>" + "<div class='wrap-text'>" + "<h5 class='clearfix'>张飞</h5>" + "<div>" + g + "</div>" + "</div>" + "<div class='wrap-ri'>" + "<div clsss='clearfix'><span>" + f + "</span></div>" + "</div>" + "<div style='clear:both;'></div>" + "</div>" + "<div class='message clearfix'>" + "<div class='user-logo'>" + "<img src='" + c + "'/>" + "</div>" + "<div class='wrap-text'>" + "<h5 class='clearfix'>" + d + "</h5>" + "<div>" + g + "的回复内容</div>" + "</div>" + "<div class='wrap-ri'>" + "<div clsss='clearfix'><span>" + f + "</span></div>" + "</div>" + "<div style='clear:both;'></div>";
-		null != g && "" != g ? ($(".mes" + a).append(i), $(".chat01_content").scrollTop($(".mes" + a).height()), $("#textarea").val(""), message()) : alert("请输入聊天内容!")
-	}
-	var a = 3,
-		b = "../public/img/chat/head/2024.jpg",
-		c = "../public/img/chat/head/2015.jpg",
-		d = "王旭";
-	$(".close_btn").click(function() {
-		$(".chatBox").hide()
-	}), $(".chat03_content li").mouseover(function() {
-		$(this).addClass("hover").siblings().removeClass("hover")
-	}).mouseout(function() {
-		$(this).removeClass("hover").siblings().removeClass("hover")
-	}), $(".chat03_content li").dblclick(function() {
-		var b = $(this).index() + 1;
-		a = b, c = "../public/img/chat/head/20" + (12 + a) + ".jpg", d = $(this).find(".chat03_name").text(), $(".chat01_content").scrollTop(0), $(this).addClass("choosed").siblings().removeClass("choosed"), $(".talkTo a").text($(this).children(".chat03_name").text()), $(".mes" + b).show().siblings().hide()
-	}), $(".ctb01").mouseover(function() {
-		$(".wl_faces_box").show()
-	}).mouseout(function() {
-		$(".wl_faces_box").hide()
-	}), $(".wl_faces_box").mouseover(function() {
-		$(".wl_faces_box").show()
-	}).mouseout(function() {
-		$(".wl_faces_box").hide()
-	}), $(".wl_faces_close").click(function() {
-		$(".wl_faces_box").hide()
-	}), $(".wl_faces_main img").click(function() {
-		var a = $(this).attr("src");
-		$("#textarea").val($("#textarea").val() + "*#" + a.substr(a.indexOf("img/") + 4, 6) + "#*"), $("#textarea").focusEnd(), $(".wl_faces_box").hide()
-	}), $(".chat02_bar img").click(function() {
-		e()
-	}), document.onkeydown = function(a) {
-		var b = document.all ? window.event : a;
-		return 13 == b.keyCode ? (e(), !1) : void 0
-	}, $.fn.setCursorPosition = function(a) {
-		return 0 == this.lengh ? this : $(this).setSelection(a, a)
-	}, $.fn.setSelection = function(a, b) {
-		if (0 == this.lengh) return this;
-		if (input = this[0], input.createTextRange) {
-			var c = input.createTextRange();
-			c.collapse(!0), c.moveEnd("character", b), c.moveStart("character", a), c.select()
-		} else input.setSelectionRange && (input.focus(), input.setSelectionRange(a, b));
-		return this
-	}, $.fn.focusEnd = function() {
-		this.setCursorPosition(this.val().length)
-	}
-}), function(a) {
-	a.extend({
-		blinkTitle: {
-			show: function() {
-				var a = 0,
-					b = document.title;
-				if (-1 == document.title.indexOf("【")) var c = setInterval(function() {
-					a++, 3 == a && (a = 1), 1 == a && (document.title = "【　　　】" + b), 2 == a && (document.title = "【新消息】" + b)
-				}, 500);
-				return [c, b]
-			},
-			clear: function(a) {
-				a && (clearInterval(a[0]), document.title = a[1])
-			}
-		}
+
+function message() {
+}
+	var messageBox = 	 $("#messgaBox" );
+	var receiverId=$(".contact-list").find("li .nav_on").attr("data-id");
+	$(".modal-shiftfix").on('click',"#sendBtn",function(){
+	    var mssage= $("#msgContent").val();
+	    if(message==""){
+	    	alert("发送的内容不能为空!");
+	    	return;
+	    }
+	    $.ajax({
+	    	url:'http://localhost:8080/springBBS/chat/sendMessage',
+	    	data:{
+	    		personId:receiverId,
+	    		sendMsg:mssage
+	    	},
+	    	success:function(json){
+	    		var result=JSON.parse(json);
+	    		if(messageBox.find("li").length>0){
+					messageBox.children().last().after(appendMessage(result,true));
+	    		}else{
+	    			messageBox.append(appendMessage(result,true));
+	    		}
+	    		$(".chat01_content").scrollTop(messageBox.height());
+	    		$("#msgContent").val(""); 
+	    	}
+	    })
 	})
-}(jQuery);
+
+     document.onkeydown=function(event){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+             if(e && e.keyCode==13){ // enter 键
+            	$("#sendBtn").click();
+            }
+        };  
+      
+

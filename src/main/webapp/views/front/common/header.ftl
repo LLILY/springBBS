@@ -14,8 +14,8 @@
             </form>
      <#if !memberId?exists>  
 	   <ul class="nav navbar-nav navbar-right"> 
-	    <li><a class="btn" href="/Account/Login">登录</a></li> 
-	    <li><a class="btn" href="/Account/Register">注册</a></li> 
+	    <li><a class="btn" href="/springBBS/user/loginPage">登录</a></li> 
+	    <li><a class="btn" href="/springBBS/user/registPage">注册</a></li> 
 	  </ul> 
    	<#else>  
      	 <ul class="nav navbar-nav navbar-right">

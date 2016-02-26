@@ -39,4 +39,19 @@ public class BaseModel {
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date lastModifyTime = new Date();
 
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Date getLastModifyTime() {
+		return lastModifyTime;
+	}
+
+	public void setLastModifyTime(Date lastModifyTime) {
+		this.lastModifyTime = lastModifyTime;
+	}
 }
