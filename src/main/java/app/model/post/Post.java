@@ -181,4 +181,12 @@ public class Post extends ContentItem {
 		this.isClosed = isClosed ? false : true;
 	}
 
+	public String getType() {
+		if (this.category == Category.博客) {
+			return "博客";
+		} else {
+			return "帖子";
+		}
+	}
+
 }

@@ -1,6 +1,6 @@
-  <div class="navbar navbar-collapse navbar-inverse" > 
+ <div class="navbar navbar-collapse navbar-inverse" > 
    <ul class="nav navbar-nav"> 
-    <li><a href="">博客</a></li> 
+    <li><a href="/springBBS/user/index">博客</a></li> 
     <li><a href="">帖子</a></li> 
     <li><a href="">Blog</a></li> 
     <li><a href="/Log/UpdateLog">日志</a></li> 
@@ -28,9 +28,9 @@
                         </a>
                         <span class="dropdown-arrow"></span>
                         <ul class="dropdown-menu">
-                            <li><a href="/springBBS/user/home"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;我的</a></li>
+                            <li><a href="/springBBS/user/home?category="><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;我的</a></li>
                             <li><a href="/springBBS/user/profile?memberId=${memberId}"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;设置</a></li>
-                            <li><a href=""><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
+                            <li><a href="/springBBS/user/memberLogout"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
                         </ul>
                     </li>
             </ul>

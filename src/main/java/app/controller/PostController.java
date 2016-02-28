@@ -38,6 +38,14 @@ public class PostController {
 		return "front/post/editPost";
 	}
 
+	@RequestMapping("/edit")
+	public ModelAndView edit(Long postId) {
+		Post post = postService.findById(postId);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("post", post);
+		return new ModelAndView("front/post/editPost", map);
+	}
+
 	@RequestMapping("/addPost")
 	@ResponseBody
 	public String addPost(String title, String content, String tag,
@@ -50,6 +58,18 @@ public class PostController {
 				Category.toCategory(category),
 				Source.toSource(source == null ? 0 : source), originalUrl,
 				member);
+		postService.savePost(post);
+		return "true";
+	}
+
+	@RequestMapping("/editPost")
+	@ResponseBody
+	public String editPost(Long postId, String title, String content,
+			String tag, Integer category, Integer source, String originalUrl) {
+		Post post = postService.findById(postId);
+		post.edit(title, content, tag, null, null,
+				Category.toCategory(category),
+				Source.toSource(source == null ? 0 : source), originalUrl);
 		postService.savePost(post);
 		return "true";
 	}

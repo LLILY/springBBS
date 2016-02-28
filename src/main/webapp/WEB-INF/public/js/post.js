@@ -10,30 +10,53 @@ $("#categorySwitch").change(function(){
 });
 
 $("#submitPost").click(function(){
-	var category=$("#categorySwitch").val(),source="",title=$("#title").val(),
+	var ele=$(this),postId=ele.attr("data-pid"),category=$("#categorySwitch").val(),source="",title=$("#title").val(),
 		tag=$("#tagInput").val(),originalUrl="",content=$("#content").val();
 	if(category==2){
 		source=$("#sourceSwitch").val();
 		originalUrl=$("#original_url").val();
 	}
-	$.ajax({
-		url:"addPost",
-		type:"post",
-		data:{
-			title:title,
-			content:content,
-			tag:tag,
-			category:category,
-			source:source,
-			originalUrl:originalUrl
-			
-		},
-		success:function(data){
-			if(data=="true"){
-				window.location.href=getRootPath()+"/user/home";
+	if(postId>0){
+		$.ajax({
+			url:"editPost",
+			type:"post",
+			data:{
+				postId:postId,
+				title:title,
+				content:content,
+				tag:tag,
+				category:category,
+				source:source,
+				originalUrl:originalUrl
+				
+			},
+			success:function(data){
+				if(data=="true"){
+					window.location.href=getRootPath()+"/user/home";
+				}
 			}
-		}
-	});
+		});
+	}else{
+		$.ajax({
+			url:"addPost",
+			type:"post",
+			data:{
+				title:title,
+				content:content,
+				tag:tag,
+				category:category,
+				source:source,
+				originalUrl:originalUrl
+				
+			},
+			success:function(data){
+				if(data=="true"){
+					window.location.href=getRootPath()+"/user/home";
+				}
+			}
+		});
+	}
+	
 });
 
 function getRootPath(){

@@ -47,4 +47,10 @@ public class ReplyDaoImpl extends BaseDaoImpl implements ReplyDao {
 				post);
 	}
 
+	@Override
+	public List<Reply> fetchAll() {
+		// TODO Auto-generated method stub
+		return (List<Reply>) fetch("select r from Reply r where r.isDeleted = false");
+	}
+
 }

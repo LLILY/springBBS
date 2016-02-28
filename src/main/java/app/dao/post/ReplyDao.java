@@ -16,4 +16,6 @@ public interface ReplyDao {
 
 	public List<Reply> fetchByPost(Post post);
 
+	public List<Reply> fetchAll();
+
 }

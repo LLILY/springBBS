@@ -7,10 +7,10 @@
 		<ul class="panel_body profile">
 			<div id="blog_userface">
 			    <a href="http://my.csdn.net/mmc_maodun" target="_blank">
-			    <img src="${(member.avatarUrl)!'http://jfbbs.tomoya.cn/static/img/default_avatar.png' }" title="访问我的空间" style="max-width:90%">
+			    <img src="${(post.creator.avatarUrl)!'http://jfbbs.tomoya.cn/static/img/default_avatar.png' }" title="访问我的空间" style="max-width:90%">
 			    </a>
 			    <br>
-			    <span><a href="http://my.csdn.net/mmc_maodun" class="user_name" target="_blank">${member.displayName }</a></span>
+			    <span><a href="http://my.csdn.net/mmc_maodun" class="user_name" target="_blank">${post.creator.displayName }</a></span>
 			</div>
 			<div class="interact">
 			    <a href="javascript:void(0);" class="btn btn-primary" id="span_add_follow" title="[加关注]"><span>加关注</span></a>

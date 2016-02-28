@@ -32,8 +32,16 @@ public class PostDaoImpl extends BaseDaoImpl implements PostDao {
 	public List<Post> fetchByCreatorAndCategory(Member member, Category category) {
 		// TODO Auto-generated method stub
 		return (List<Post>) fetch(
-				"select p from Post p where p.isDeleted = false and p.creator = ? and p.category=?",
+				"select p from Post p where p.isDeleted = false and p.creator = ? and p.category=?  order by p.createTime desc",
 				member, category);
+	}
+
+	@Override
+	public List<Post> fetchByCategory(Category category) {
+		// TODO Auto-generated method stub
+		return (List<Post>) fetch(
+				"select p from Post p where p.isDeleted = false  and p.category=?  order by p.createTime desc",
+				category);
 	}
 
 	@Override
@@ -46,7 +54,8 @@ public class PostDaoImpl extends BaseDaoImpl implements PostDao {
 			hql.append(" and concat_ws(',',p.name,p.content,p.tag,p.postModule.name) like ?");
 			params.add("%" + search + "%");
 		}
-		return (List<Post>) find(hql.toString(), params.toArray());
+		hql.append(" order by p.createTime desc");
+		return (List<Post>) fetch(hql.toString(), params.toArray());
 	}
 
 }

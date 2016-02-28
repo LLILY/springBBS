@@ -13,5 +13,7 @@ public interface PostService {
 
 	public List<Post> fetchByCreatorAndCategory(Member member, Category category);
 
+	public List<Post> fetchByCategory(Category category);
+
 	public List<Post> fetchByConditions(String search);
 }

@@ -40,4 +40,10 @@ public class PostServiceImpl implements PostService {
 		// TODO Auto-generated method stub
 		return postDao.fetchByConditions(search);
 	}
+
+	@Override
+	public List<Post> fetchByCategory(Category category) {
+		// TODO Auto-generated method stub
+		return postDao.fetchByCategory(category);
+	}
 }

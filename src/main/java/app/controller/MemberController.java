@@ -29,17 +29,31 @@ public class MemberController {
 	public PostService postService;
 
 	@RequestMapping("/index")
-	public String index() {
-		return "front/index";
+	public ModelAndView index(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Long memberId = (Long) session.getAttribute("memberId");
+		Member member = memberService.findById(memberId);
+		Map<String, Object> map = new HashMap<String, Object>();
+		if (member != null) {
+			map.put("displayName", member.displayName);
+		}
+		// 暂时只处理博客
+		List<Post> postList = postService.fetchByCategory(Category.博客);
+		map.put("postList", postList);
+		map.put("postCount", postList.size());
+		return new ModelAndView("front/index", map);
 	}
 
 	@RequestMapping("/home")
-	public ModelAndView home(HttpServletRequest request) {
+	public ModelAndView home(Category category, HttpServletRequest request) {
+		if (category == null) {
+			category = Category.博客;
+		}
 		HttpSession session = request.getSession();
 		Long memberId = (Long) session.getAttribute("memberId");
 		Member member = memberService.findById(memberId);
 		List<Post> postList = postService.fetchByCreatorAndCategory(member,
-				Category.博客);
+				category);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("postList", postList);
 		return new ModelAndView("front/user/home", map);
@@ -83,7 +97,25 @@ public class MemberController {
 		session.setAttribute("memberId", member.id);
 		session.setAttribute("memberName", member.displayName);
 		session.setAttribute("avatarUrl", member.avatarUrl);
+		// 暂时只处理博客
+		List<Post> postList = postService.fetchByCreatorAndCategory(member,
+				Category.博客);
+		map.put("postList", postList);
 		return new ModelAndView("front/index", map);
+	}
+
+	@RequestMapping("/memberLogout")
+	public ModelAndView memberLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("member");
+		session.removeAttribute("memberId");
+		session.removeAttribute("memberName");
+		session.removeAttribute("avatarUrl");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("email", "");
+		map.put("password", "");
+		map.put("errorMsg", "");
+		return new ModelAndView("login", map);
 	}
 
 	@RequestMapping("/loginPage")

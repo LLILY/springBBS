@@ -46,7 +46,6 @@
 <ul id="myTab" class="nav nav-tabs">
    <li class="active"><a href="#bbs" data-toggle="tab">博客</a></li>
    <li><a href="#post" data-toggle="tab">帖子</a></li>
-   <li><a href="#ios" data-toggle="tab">帖子</a></li>
 </ul>
 <div id="myTabContent" class="tab-content" style="border:#e8e8e8 1px solid"> 
 	  <div class="tab-pane fade in active" id="bbs" >
